@@ -17,6 +17,10 @@ davisdata <- read.csv(file="UCDavis.csv")
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
 
+$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.   
+$H_A$: The average number drinks is different between at least two rows.  
+
+
 ## Now with ggplot - first select the basic data
 
 ```{r}
@@ -28,6 +32,7 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 basicCN + geom_boxplot()
 ```
   
+From the plot, the ones in the back tend to get more alcohol than the front seats and middle. Middle has some max amounts at a higher level than the front. 
   
 ### get fancy  
 
@@ -35,9 +40,18 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
+The back seat shows a higher maximum than the others. Front seat being the one with the least spread of values.
+
 ## Numerical Summarys 
 
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+
 ## Inferential Tests
+
+
+
 
 ## Conclusions
 
